@@ -1,0 +1,122 @@
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (6.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (4.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateMeasures (20200614215824)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "measures" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "date" varchar, "value" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200614215824"]]
+  [1m[35m (4.3ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateBodyparts (20200614215907)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "bodyparts" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "target" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200614215907"]]
+  [1m[35m (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-06-14 21:59:14.153828"], ["updated_at", "2020-06-14 21:59:14.153828"]]
+  [1m[35m (3.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBodypart Create (0.3ms)[0m  [1m[32mINSERT INTO "bodyparts" ("name", "target", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "biceps"], ["target", 12], ["created_at", "2020-06-14 22:03:28.079204"], ["updated_at", "2020-06-14 22:03:28.079204"]]
+  [1m[35m (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBodypart Create (0.4ms)[0m  [1m[32mINSERT INTO "bodyparts" ("name", "target", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "triceps"], ["target", 30], ["created_at", "2020-06-14 22:03:38.628224"], ["updated_at", "2020-06-14 22:03:38.628224"]]
+  [1m[35m (3.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBodypart Create (0.2ms)[0m  [1m[32mINSERT INTO "bodyparts" ("name", "target", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "chest"], ["target", 100], ["created_at", "2020-06-14 22:03:48.425705"], ["updated_at", "2020-06-14 22:03:48.425705"]]
+  [1m[35m (3.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddBodypartIdToMeasure (20200614220436)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "measures" ADD "bodypart_id" integer[0m
+  [1m[36mprimary::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200614220436"]]
+  [1m[35m (3.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMeasure Create (0.2ms)[0m  [1m[32mINSERT INTO "measures" ("value", "created_at", "updated_at", "bodypart_id") VALUES (?, ?, ?, ?)[0m  [["value", 2], ["created_at", "2020-06-14 22:05:25.381191"], ["updated_at", "2020-06-14 22:05:25.381191"], ["bodypart_id", 1]]
+  [1m[35m (3.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMeasure Create (0.3ms)[0m  [1m[32mINSERT INTO "measures" ("name", "value", "created_at", "updated_at", "bodypart_id") VALUES (?, ?, ?, ?, ?)[0m  [["name", "biceps"], ["value", 2], ["created_at", "2020-06-14 22:05:41.140261"], ["updated_at", "2020-06-14 22:05:41.140261"], ["bodypart_id", 1]]
+  [1m[35m (3.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMeasure Create (0.3ms)[0m  [1m[32mINSERT INTO "measures" ("name", "value", "created_at", "updated_at", "bodypart_id") VALUES (?, ?, ?, ?, ?)[0m  [["name", "biceps"], ["value", 2], ["created_at", "2020-06-14 22:05:44.444059"], ["updated_at", "2020-06-14 22:05:44.444059"], ["bodypart_id", 1]]
+  [1m[35m (3.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMeasure Create (0.3ms)[0m  [1m[32mINSERT INTO "measures" ("name", "value", "created_at", "updated_at", "bodypart_id") VALUES (?, ?, ?, ?, ?)[0m  [["name", "biceps"], ["value", 3], ["created_at", "2020-06-14 22:05:47.346505"], ["updated_at", "2020-06-14 22:05:47.346505"], ["bodypart_id", 1]]
+  [1m[35m (3.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMeasure Create (0.3ms)[0m  [1m[32mINSERT INTO "measures" ("name", "value", "created_at", "updated_at", "bodypart_id") VALUES (?, ?, ?, ?, ?)[0m  [["name", "triceps"], ["value", 3], ["created_at", "2020-06-14 22:05:57.031655"], ["updated_at", "2020-06-14 22:05:57.031655"], ["bodypart_id", 2]]
+  [1m[35m (3.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMeasure Create (0.3ms)[0m  [1m[32mINSERT INTO "measures" ("name", "value", "created_at", "updated_at", "bodypart_id") VALUES (?, ?, ?, ?, ?)[0m  [["name", "triceps"], ["value", 3], ["created_at", "2020-06-14 22:05:57.613665"], ["updated_at", "2020-06-14 22:05:57.613665"], ["bodypart_id", 2]]
+  [1m[35m (3.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMeasure Create (0.3ms)[0m  [1m[32mINSERT INTO "measures" ("name", "value", "created_at", "updated_at", "bodypart_id") VALUES (?, ?, ?, ?, ?)[0m  [["name", "triceps"], ["value", 4], ["created_at", "2020-06-14 22:06:01.057762"], ["updated_at", "2020-06-14 22:06:01.057762"], ["bodypart_id", 2]]
+  [1m[35m (3.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMeasure Create (0.3ms)[0m  [1m[32mINSERT INTO "measures" ("name", "value", "created_at", "updated_at", "bodypart_id") VALUES (?, ?, ?, ?, ?)[0m  [["name", "chest"], ["value", 4], ["created_at", "2020-06-14 22:06:08.341843"], ["updated_at", "2020-06-14 22:06:08.341843"], ["bodypart_id", 3]]
+  [1m[35m (3.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMeasure Create (0.3ms)[0m  [1m[32mINSERT INTO "measures" ("name", "value", "created_at", "updated_at", "bodypart_id") VALUES (?, ?, ?, ?, ?)[0m  [["name", "chest"], ["value", 4], ["created_at", "2020-06-14 22:06:09.786406"], ["updated_at", "2020-06-14 22:06:09.786406"], ["bodypart_id", 3]]
+  [1m[35m (3.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMeasure Create (0.3ms)[0m  [1m[32mINSERT INTO "measures" ("name", "value", "created_at", "updated_at", "bodypart_id") VALUES (?, ?, ?, ?, ?)[0m  [["name", "chest"], ["value", 20], ["created_at", "2020-06-14 22:06:12.825387"], ["updated_at", "2020-06-14 22:06:12.825387"], ["bodypart_id", 3]]
+  [1m[35m (3.4ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/bodyparts" for 186.156.76.129 at 2020-06-14 22:06:47 +0000
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BodypartsController#index as HTML
+  [1m[36mBodypart Load (0.1ms)[0m  [1m[34mSELECT "bodyparts".* FROM "bodyparts"[0m
+  ↳ app/controllers/bodyparts_controller.rb:7:in `index'
+Completed 200 OK in 14ms (Views: 12.0ms | ActiveRecord: 0.7ms | Allocations: 5771)
+
+
+Started GET "/favicon.ico" for 186.156.76.129 at 2020-06-14 22:06:49 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+actionpack (6.0.3.1) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/host_authorization.rb:76:in `call'
+railties (6.0.3.1) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/bodyparts/chest/measures" for 186.156.76.129 at 2020-06-14 22:07:24 +0000
+Processing by MeasuresController#index as HTML
+  Parameters: {"bodypart_id"=>"chest"}
+  [1m[36mMeasure Load (0.2ms)[0m  [1m[34mSELECT "measures".* FROM "measures"[0m
+  ↳ app/controllers/measures_controller.rb:7:in `index'
+Completed 200 OK in 11ms (Views: 9.6ms | ActiveRecord: 0.7ms | Allocations: 7893)
+
+
+Started GET "/bodyparts/1/measures" for 186.156.76.129 at 2020-06-14 22:07:31 +0000
+Processing by MeasuresController#index as HTML
+  Parameters: {"bodypart_id"=>"1"}
+  [1m[36mMeasure Load (0.1ms)[0m  [1m[34mSELECT "measures".* FROM "measures"[0m
+  ↳ app/controllers/measures_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.1ms | Allocations: 2377)
+
+
