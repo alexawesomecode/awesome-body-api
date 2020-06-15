@@ -2,8 +2,7 @@ class MeasuresController < ApplicationController
 
   # GET /measures
   def index
-    @measures = Measure.all
-
+    @measures = Measure.where(bodypart_id: params[:bodypart_id]).all.reverse_order
     render json: @measures
   end
 
