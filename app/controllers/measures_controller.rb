@@ -17,4 +17,15 @@ class MeasuresController < ApplicationController
     end
   end
 
+   def progress
+	# custom for getting percent progress towards goal
+	total = 0
+	bodypart = Bodypart.find(params[:bodypart_id])
+	@allmeasures = Measure.where(bodypart_id: params[:bodypart_id]).all
+        @allmeasures.map {|item| total+=item.value }
+	goal_percent =  (total * 100) / bodypart.target
+	render json: goal_percent
+   end
+
+
 end
