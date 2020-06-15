@@ -7,6 +7,12 @@ class BodypartsController < ApplicationController
     render json: @bodyparts
   end
 
+
+  def show
+
+@bodypart = Bodypart.find(params[:id])
+render json: @bodypart
+end
   # GET /bodyparts/1
 
 end

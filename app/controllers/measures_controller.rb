@@ -2,7 +2,9 @@ class MeasuresController < ApplicationController
 
   # GET /measures
   def index
-    @measures = Measure.where(bodypart_id: params[:bodypart_id]).all.reverse_order
+   
+    @measures = Measure.where(name: params[:bodypart_id]).all.reverse_order
+    p @measures
     render json: @measures
   end
 
@@ -28,4 +30,8 @@ class MeasuresController < ApplicationController
    end
 
 
+private
+    def measure_params
+      params.require(:measure).permit(:bodypart_id,  :value, :name, :date)
+    end
 end
