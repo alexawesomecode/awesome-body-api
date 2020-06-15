@@ -13,9 +13,16 @@ it 'get all index records succesfuly' do
        record = Bodypart.create(name:"biceps", target:12)
        record = Bodypart.create(name:"triceps", target:122)
        get  :index
-       #expect(response).not_to be_empty
        expect(JSON(response.body).size).to eq(2)
 end
+
+      
+      
+it 'returns code 401 with invalid request' do
+        get :show
+        expect(response).to have_http_status(401)
+      end
+
 
 end
 
