@@ -13,7 +13,7 @@ class MeasuresController < ApplicationController
     @measure = Measure.new(measure_params)
 
     if @measure.save
-      render json: @measure, status: :created, location: @measure
+      render json: @measure, status: :created
     else
       render json: @measure.errors, status: :unprocessable_entity
     end
@@ -32,6 +32,6 @@ class MeasuresController < ApplicationController
 
 private
     def measure_params
-      params.require(:measure).permit(:bodypart_id,  :value, :name, :date)
+      params.require(:measure).permit(:bodypart_id, :value, :name, :date)
     end
 end

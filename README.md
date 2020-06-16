@@ -1,24 +1,23 @@
-## README
+# awesome-body-api
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+## introduction
 
-* Ruby version
+This is a backend API built with Rails for storing measures records for everypart of your body. So you can keep a log or track of your progress towards a goal.
 
-* System dependencies
+This is the backend part for my 'awesome-body-tracker' built in React.
 
-* Configuration
+# setup
 
-* Database creation
+Just clone this repo and run 'bundle install' and then 'rails s'
 
-* Database initialization
+You can also seed the database with 'rails db:seed'
 
-* How to run the test suite
+# technology
 
-* Services (job queues, cache servers, search engines, etc.)
+- Ruby on Rails
 
-* Deployment instructions
 
-* ...
+# author
+
+alexawesomecode
