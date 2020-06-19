@@ -1,5 +1,4 @@
 class BodypartsController < ApplicationController
-
   # GET /bodyparts
   def index
     @bodyparts = Bodypart.all
@@ -7,12 +6,9 @@ class BodypartsController < ApplicationController
     render json: @bodyparts
   end
 
-
   def show
-
-@bodypart = Bodypart.find(params[:id])
-render json: @bodypart
-end
+    @bodypart = Bodypart.find(params[:id])
+    render json: @bodypart
+  end
   # GET /bodyparts/1
-
 end
