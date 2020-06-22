@@ -3,11 +3,11 @@ require 'rails_helper'
 RSpec.describe Measure, type: :model do
   it 'requires presence of bodypart_id and value' do
     record = { value: 2 }
-    Measure.new(record).save
+    measure = Measure.new(record).save
     expect(measure).to eq(false)
 
     record2 = { bodypart_id: 1, name: 'biceps measure' }
-    Measure.new(record2).save
+    measure =  Measure.new(record2).save
     expect(measure).to eq(false)
   end
 
