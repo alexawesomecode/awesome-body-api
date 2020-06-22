@@ -7,7 +7,7 @@ RSpec.describe Measure, type: :model do
     expect(measure).to eq(false)
 
     record2 = { bodypart_id: 1, name: 'biceps measure' }
-    measure =  Measure.new(record2).save
+    measure = Measure.new(record2).save
     expect(measure).to eq(false)
   end
 
