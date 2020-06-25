@@ -1,9 +1,9 @@
-require 'rails_helper'
+require_relative '../rails_helper'
 
 RSpec.describe BodypartsController, type: :controller do
-  subject(:a) { Bodypart.create(name: 'biceps', target: 12) }
-  subject(:b) { Bodypart.create(name: 'triceps', target: 122) }
-  subject(:total) { Bodypart.all }
+  let(:a) { Bodypart.create(name: 'biceps', target: 12) }
+  let(:b) { Bodypart.create(name: 'triceps', target: 122) }
+  let(:total) { Bodypart.all }
 
   it 'GET INDEX returns a success GET response' do
     get :index
