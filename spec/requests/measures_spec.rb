@@ -21,9 +21,9 @@ RSpec.describe MeasuresController, type: :controller do
 
   it 'get right records and  associate to id succesfuly' do
     bodypart = create(:bodypart, name: 'chest', target: 222)
-    part1 = create(:measure, bodypart_id: 1, value: 22, name: 'chest')
-    part2 = create(:measure, bodypart_id: 1, value: 222)
-    part3 = create(:measure, bodypart_id: 1, value: 233)
+    part1 = create(:measure, bodypart_id: bodypart.id, value: 22, name: 'chest')
+    part2 = create(:measure, bodypart_id: bodypart.id, value: 222, name: 'chest')
+    part3 = create(:measure, bodypart_id: bodypart.id, value: 233, name: 'chest')
 
     get :index, params: { bodypart_id: 'chest' }
     expect(JSON(response.body).size).to eq(3)
