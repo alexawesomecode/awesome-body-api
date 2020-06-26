@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::API
-
-def route_not_found
-	render json: {"msg": "not found"}
+  def route_not_found
+    @resp = { msg: 'not found' }
+    render json: @resp
   end
 end

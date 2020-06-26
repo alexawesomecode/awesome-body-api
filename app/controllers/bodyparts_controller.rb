@@ -5,5 +5,4 @@ class BodypartsController < ApplicationController
 
     render json: @bodyparts
   end
-
 end

@@ -1,7 +1,6 @@
 FactoryBot.define do
-  
   factory :bodypart do
-    name { "biceps" }
+    name { 'biceps' }
     target { 22 }
   end
 
@@ -11,20 +10,14 @@ FactoryBot.define do
   end
 
   factory :progress_record, class: Bodypart do
-    
     target { 100 }
     name { 'head' }
   end
 
   factory :new_measure do
-    
     value { 10 }
     name { 'knee' }
-    date { '06-07-2020'}
-    bodypart_id {1}
-
+    date { '06-07-2020' }
+    bodypart_id { 1 }
   end
-
- 
-  
 end

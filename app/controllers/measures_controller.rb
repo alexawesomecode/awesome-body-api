@@ -1,7 +1,7 @@
 class MeasuresController < ApplicationController
   # GET /measures
   def index
-    @measures = Measure.where(name: params[:bodypart_id]).all.reverse_order 
+    @measures = Measure.where(name: params[:bodypart_id]).all.reverse_order
     render json: @measures
   end
 
@@ -12,7 +12,8 @@ class MeasuresController < ApplicationController
     if @measure.save
       render json: @measure, status: :created
     else
-      render json: {"msg": "error creating record"}
+      @measure = { msg: 'error creating record' }
+      render json: @measure
     end
   end
 

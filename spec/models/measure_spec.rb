@@ -10,11 +10,9 @@ RSpec.describe Measure, type: :model do
   end
 
   it 'successful create records with value and bodypart' do
-
-    
     all_records = Measure.all.size
-    record1 = create(:measure, bodypart_id: 2, value: 12)
-    record1 = create(:measure, bodypart_id: 1, value: 1)
+    create(:measure, bodypart_id: 2, value: 12)
+    create(:measure, bodypart_id: 1, value: 1)
     next_records = all_records + 2
     expect(Measure.all.size).to eq(next_records)
   end
